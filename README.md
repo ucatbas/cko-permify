@@ -39,3 +39,103 @@ curl --location 'http://localhost:3476/v1/tenants/t1/schemas/read' \
 }'
 ```
 
+### Write Data
+```bash
+curl --location 'http://localhost:3476/v1/tenants/t1/data/write' \
+--header 'Content-Type: application/json' \
+--data '{
+    "metadata": {
+        "schema_version": ""
+    },
+    "tuples": [
+        {
+            "entity": {
+                "type": "account",
+                "id": "1"
+            },
+            "relation": "owner",
+            "subject": {
+                "type": "user",
+                "id": "kevin"
+            }
+        },
+        {
+            "entity": {
+                "type": "account",
+                "id": "2"
+            },
+            "relation": "owner",
+            "subject": {
+                "type": "user",
+                "id": "george"
+            }
+        },
+        {
+            "entity": {
+                "type": "account",
+                "id": "1"
+            },
+            "relation": "following",
+            "subject": {
+                "type": "user",
+                "id": "george"
+            }
+        },
+        {
+            "entity": {
+                "type": "account",
+                "id": "2"
+            },
+            "relation": "follower",
+            "subject": {
+                "type": "user",
+                "id": "kevin"
+            }
+        },
+        {
+            "entity": {
+                "type": "post",
+                "id": "1"
+            },
+            "relation": "account",
+            "subject": {
+                "type": "account",
+                "id": "1"
+            }
+        },
+        {
+            "entity": {
+                "type": "post",
+                "id": "2"
+            },
+            "relation": "account",
+            "subject": {
+                "type": "account",
+                "id": "2"
+            }
+        }
+    ],
+    "attributes": []
+}'
+```
+### Check Permission
+```bash
+curl --location 'http://localhost:3476/v1/tenants/t1/permissions/check' \
+--header 'Content-Type: application/json' \
+--data '{
+    "metadata": {
+        "snap_token": "",
+        "schema_version": "",
+        "depth": 20
+    },
+    "entity": {
+        "type": "post",
+        "id": "1"
+    },
+    "permission": "view",
+    "subject": {
+        "type": "user",
+        "id": "george"
+    }
+}'
+```
