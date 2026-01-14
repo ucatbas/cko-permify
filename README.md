@@ -139,3 +139,5 @@ curl --location 'http://localhost:3476/v1/tenants/t1/permissions/check' \
     }
 }'
 ```
+### Playground Link
+https://play.permify.co/?s=1768411325712-up0mniv
