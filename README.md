@@ -1,5 +1,10 @@
 # cko-permify
 
+### Permify
+- permify.co
+- github.com/Permify/permify 
+- docs.permify.co 
+
 ### Installation
 #### Brew
 ```bash
